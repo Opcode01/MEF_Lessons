@@ -11,18 +11,13 @@ namespace Example1
     class Program
     {
 
-        [Import]
-        string message;
+        #region ImportMany
 
-        [Import]
-        int integer;
-
-        [Import]
-        Func<double, double, double> result { get; set; }
+        #endregion
 
         private void Compose()
         {
-            AssemblyCatalog catalog = new AssemblyCatalog(typeof(Extensions.MefExtensions).Assembly);
+            AssemblyCatalog catalog = new AssemblyCatalog(typeof(Program).Assembly);
             CompositionContainer container = new CompositionContainer(catalog);
             container.ComposeParts(this);
         }
@@ -32,9 +27,10 @@ namespace Example1
             var program = new Program();
             program.Compose();
 
-            Console.WriteLine(program.message);
-            Console.WriteLine(program.integer);
-            Console.WriteLine(program.result(1.3, 4.1));
+        #region Coding with Interface
+
+        #endregion
+
             Console.ReadLine();
         }
     }
