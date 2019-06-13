@@ -10,15 +10,19 @@ namespace Example1
 {
     class Program
     {
-        [Export]
-        string msg = "Hello MEF";
 
         [Import]
         string message;
 
+        [Import]
+        int integer;
+
+        [Import]
+        Func<double, double, double> result { get; set; }
+
         private void Compose()
         {
-            AssemblyCatalog catalog = new AssemblyCatalog(typeof(Program).Assembly);
+            AssemblyCatalog catalog = new AssemblyCatalog(typeof(Extensions.MefExtensions).Assembly);
             CompositionContainer container = new CompositionContainer(catalog);
             container.ComposeParts(this);
         }
@@ -29,6 +33,8 @@ namespace Example1
             program.Compose();
 
             Console.WriteLine(program.message);
+            Console.WriteLine(program.integer);
+            Console.WriteLine(program.result(1.3, 4.1));
             Console.ReadLine();
         }
     }
