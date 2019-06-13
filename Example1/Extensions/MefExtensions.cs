@@ -9,19 +9,49 @@ namespace Extensions
 {
     public class MefExtensions
     {
-        [Export]
-        public double GetResult(double a, double b)
+        [Export(typeof(IInterface))]
+        public class A : IInterface
         {
-            return a + b;
+            public string name
+            {
+                get { return "Name 1"; }
+            }
         }
 
-        [Export]
-        public int GetInteger
+        [Export(typeof(IInterface))]
+        public class B : IInterface
         {
-            get { return 100; }
+            public string name
+            {
+                get { return "Name 2"; }
+            }
         }
 
-        [Export]
-        string msg = "Hello MEF";
+        [Export(typeof(IInterface))]
+        public class C : IInterface
+        {
+            public string name
+            {
+                get { return "Hello extensible 1"; }
+            }
+        }
+
+        [Export(typeof(IInterface))]
+        public class D : IInterface
+        {
+            public string name
+            {
+                get { return "Hello extensible 2"; }
+            }
+        }
+
+        [Export(typeof(IInterface))]
+        public class E : IInterface
+        {
+            public string name
+            {
+                get { return "Hello extensible 3"; }
+            }
+        }
     }
 }

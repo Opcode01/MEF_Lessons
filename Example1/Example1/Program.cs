@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
+using Extensions;
 
 namespace Example
 {
@@ -21,7 +22,9 @@ namespace Example
 
         private void Compose()
         {
-            AssemblyCatalog catalog = new AssemblyCatalog(typeof(Program).Assembly);
+            //AssemblyCatalog catalog = new AssemblyCatalog(typeof(IInterface).Assembly);
+            DirectoryCatalog catalog = new DirectoryCatalog(".");
+
             CompositionContainer container = new CompositionContainer(catalog);
             container.ComposeParts(this);
         }
