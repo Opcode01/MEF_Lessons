@@ -6,13 +6,17 @@ using System.Threading.Tasks;
 using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
 
-namespace Example1
+namespace Example
 {
     class Program
     {
 
         #region ImportMany
 
+        //Lazy indicates that the objects will not be instantiated until they are actually needed
+        [ImportMany(typeof(IInterface))]
+        List<Lazy<IInterface>> objList;
+        
         #endregion
 
         private void Compose()
@@ -27,9 +31,12 @@ namespace Example1
             var program = new Program();
             program.Compose();
 
-        #region Coding with Interface
+            #region Coding with Interface
 
-        #endregion
+            #endregion
+
+            foreach(var obj in program.objList)
+                Console.WriteLine(obj.Value.name);
 
             Console.ReadLine();
         }
