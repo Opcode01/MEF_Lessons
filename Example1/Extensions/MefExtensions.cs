@@ -9,6 +9,23 @@ namespace Extensions
 {
     public class MefExtensions
     {
+        [ExportMetadata("Uppercase", "Y")]
+        public class Class1 : IInterfaceWithInheritance
+        {
+            public string name
+            {
+                get { return "Coming from Inherited interface, Class 1"; }
+            }
+        }
+
+        public class Class2 : IInterfaceWithInheritance
+        {
+            public string name
+            {
+                get { return "Coming from Inherited interface, Class 2"; }
+            }
+        }
+
         [Export(typeof(IInterface))]
         [ExportMetadata("Uppercase", "Y")]
         public class A : IInterface

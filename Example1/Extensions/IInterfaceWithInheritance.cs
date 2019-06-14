@@ -7,6 +7,11 @@ using System.Threading.Tasks;
 
 namespace Extensions
 {
+
+    /// <summary>
+    /// Any class that implements this interface will be exported via MEF without having to
+    /// explicitly/concretely be dec
+    /// </summary>
     [InheritedExport]
     public interface IInterfaceWithInheritance
     {
