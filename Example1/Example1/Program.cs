@@ -26,7 +26,7 @@ namespace Example
 
         //Lazy indicates that the objects will not be instantiated until they are actually needed
         [ImportMany(typeof(IInterface))]
-        List<Lazy<IInterface>> objList;
+        List<Lazy<IInterface, IInterfaceMetadata>> objList;
         
         #endregion
 
@@ -52,9 +52,15 @@ namespace Example
 
             #endregion
 
-            foreach(var obj in program.objList)
-                Console.WriteLine(obj.Value.name);
+            foreach (var obj in program.objList)
+            {
+                if (obj.Metadata.Uppercase.Equals("Y"))
+                    Console.WriteLine(obj.Value.name.ToUpper());
+                else
+                    Console.WriteLine(obj.Value.name);
 
+
+            }
             Console.ReadLine();
         }
     }

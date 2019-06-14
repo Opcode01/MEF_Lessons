@@ -10,6 +10,7 @@ namespace Extensions
     public class MefExtensions
     {
         [Export(typeof(IInterface))]
+        [ExportMetadata("Uppercase", "Y")]
         public class A : IInterface
         {
             public string name
@@ -19,6 +20,7 @@ namespace Extensions
         }
 
         [Export(typeof(IInterface))]
+        [ExportMetadata("Uppercase", "N")]
         public class B : IInterface
         {
             public string name
@@ -28,6 +30,7 @@ namespace Extensions
         }
 
         [Export(typeof(IInterface))]
+        [ExportMetadata("Uppercase", "Y")]
         public class C : IInterface
         {
             public string name

@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IInterface.cs" />
+    <Compile Include="IInterfaceMetadata.cs" />
     <Compile Include="MefExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
