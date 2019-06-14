@@ -9,6 +9,16 @@ using Extensions;
 
 namespace Example
 {
+    [Export(typeof(IInterface))]
+    class MyClass : IInterface
+    {
+        public string name
+        {
+            get { return "The power of aggregate";  }
+        }
+        
+    }
+
     class Program
     {
 
@@ -22,8 +32,12 @@ namespace Example
 
         private void Compose()
         {
-            //AssemblyCatalog catalog = new AssemblyCatalog(typeof(IInterface).Assembly);
-            DirectoryCatalog catalog = new DirectoryCatalog(".");
+            AssemblyCatalog assemblyCatalog = new AssemblyCatalog(typeof(Program).Assembly);
+            DirectoryCatalog directoryCatalog = new DirectoryCatalog(".");
+
+            AggregateCatalog catalog = new AggregateCatalog();
+            catalog.Catalogs.Add(assemblyCatalog);
+            catalog.Catalogs.Add(directoryCatalog);
 
             CompositionContainer container = new CompositionContainer(catalog);
             container.ComposeParts(this);
